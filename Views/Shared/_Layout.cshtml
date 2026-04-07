@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <!-- Leaflet (OpenStreetMap) — ücretsiz, Google Maps API gerektirmez -->
+    <link rel="stylesheet" href="~/lib/leaflet/leaflet.min.css" />
+    <script src="~/lib/leaflet/leaflet.min.js"></script>
+
+    <style>
+        /* =====================
+           GLOBAL RESET & BASE
+        ======================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #ffffff;
+            color: #2c2c2a;
+            overflow-x: hidden;
+        }
+
+        /* =====================
+           NAVBAR
+        ======================== */
+        .hus-navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 40px;
+            height: 110px;
+            transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
+        }
+
+        /* Scrolled state — added via JS */
+        .hus-navbar.scrolled {
+            background: rgba(255, 255, 255, 0.97);
+            border-bottom: 1px solid #e8e0d0;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .hus-navbar .nav-logo {
+            position: absolute;
+            left: 40px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .hus-navbar .nav-logo img {
+            height: 90px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .hus-navbar.scrolled .nav-logo img {
+            filter: none;
+        }
+
+        .hus-navbar .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .hus-navbar .nav-links a {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.90);
+            text-decoration: none;
+            letter-spacing: 0.4px;
+            transition: color 0.2s ease;
+        }
+
+        .hus-navbar.scrolled .nav-links a {
+            color: #3d3d3a;
+        }
+
+        .hus-navbar .nav-links a:hover {
+            color: #d4a843;
+        }
+
+        .hus-navbar.scrolled .nav-links a:hover {
+            color: #2d5a3d;
+        }
+
+        .hus-navbar .nav-cta {
+            position: absolute;
+            right: 40px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            background: rgba(255,255,255,0.15);
+            color: #ffffff;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 10px 20px;
+            border-radius: 7px;
+            border: 1.5px solid rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease, border-color 0.35s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .hus-navbar.scrolled .nav-cta {
+            background: #2d5a3d;
+            color: #ffffff;
+            border-color: #2d5a3d;
+            backdrop-filter: none;
+        }
+
+        .hus-navbar .nav-cta:hover {
+            background: rgba(255,255,255,0.30);
+            color: #ffffff;
+        }
+
+        .hus-navbar.scrolled .nav-cta:hover {
+            background: #1e3f2b;
+            color: #ffffff;
+        }
+
+        .hus-navbar .nav-cta svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        /* =====================
+           MAIN CONTENT OFFSET
+        ======================== */
+        main[role="main"] {
+            padding-top: 0; /* hero is full-height, no offset needed */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="hus-navbar">
+        <a href="#hero" class="nav-logo" onclick="scrollToHero(event)">
+            <img src="~/logo.png" alt="Huş Mühendislik Logo" />
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="#about"      onclick="scrollToSection(event,'about')">Hakkımızda</a></li>
+            <li><a href="#services"   onclick="scrollToSection(event,'services')">Hizmetler</a></li>
+            <li><a href="#references" onclick="scrollToSection(event,'references')">Referanslar</a></li>
+            <li><a href="#contact"    onclick="scrollToSection(event,'contact')">İletişim</a></li>
+        </ul>
+
+        <a href="#contact" class="nav-cta" onclick="scrollToSection(event,'contact')">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Bize Ulaşın
+        </a>
+    </nav>
+
+    <main role="main">
+        @RenderBody()
+    </main>
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/contact-map.js" asp-append-version="true"></script>
+
+    <script>
+        /* ---- Scroll helpers ---- */
+        function scrollToSection(event, sectionId) {
+            if (event) event.preventDefault();
+            var el = document.getElementById(sectionId);
+            if (el) {
+                window.scrollTo({
+                    top: el.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        }
+
+        function scrollToHero(event) {
+            if (event) event.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* Legacy aliases used in Index.cshtml */
+        function scrollToServiceSection(sectionId) { scrollToSection(null, sectionId); }
+        function scrollToAbout(e)      { scrollToSection(e, 'about'); }
+        function scrollToReferences(e) { scrollToSection(e, 'references'); }
+        function scrollToServices(e)   { scrollToSection(e, 'services'); }
+        function scrollToContact(e)    { scrollToSection(e, 'contact'); }
+
+        /* Google Maps */
+        window.onload = function () {
+            if (typeof loadGoogleMapsScript === 'function') {
+                loadGoogleMapsScript();
+            }
+        };
+
+        /* Active nav highlight on scroll */
+        var sections = ['about', 'services', 'references', 'contact'];
+
+        /* Navbar transparent → white on scroll */
+        var navbar = document.querySelector('.hus-navbar');
+        function updateNavbar() {
+            if (window.pageYOffset > 60) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+        window.addEventListener('scroll', updateNavbar);
+        updateNavbar();
+
+        window.addEventListener('scroll', function () {
+            var scrollY = window.pageYOffset;
+            sections.forEach(function (id) {
+                var el = document.getElementById(id);
+                var link = document.querySelector('.nav-links a[href="#' + id + '"]');
+                if (el && link) {
+                    var top = el.offsetTop - 100;
+                    var bottom = top + el.offsetHeight;
+                    if (scrollY >= top && scrollY < bottom) {
+                        link.style.color = '#2d5a3d';
+                        link.style.fontWeight = '600';
+                    } else {
+                        link.style.color = '';
+                        link.style.fontWeight = '';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: white;
+  padding: 20px 0;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header {
+    height: 150px;
+  }
+  
+  .company-info h1 {
+    font-size: 24px;
+  }
+  
+  .company-info p {
+    font-size: 14px;
+  }
+}
+
+/* Fix for devices that don't support smooth scrolling */
+@supports not (scroll-behavior: smooth) {
+  html, body {
+    scroll-behavior: auto;
+  }
+}
+
+/* Fix for iOS Safari 100vh issue */
+@supports (-webkit-touch-callout: none) {
+  .home-container {
+    min-height: 70vh; /* Use vh instead of 100% */
+    height: auto;
+  }
+}
+
+/* Ensure form elements are easy to use on mobile */
+input, textarea, select, button {
+  font-size: 16px; /* Prevents iOS zoom on focus */
+}

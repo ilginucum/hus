@@ -1,0 +1,1736 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  /* Hero section with left-aligned layout and reduced height */
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 5vh;
+    padding-left: 10%;
+    min-height: 70vh; /* Reduced from 85vh to 70vh */
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    background-color: #f5f5f5;
+    padding-bottom: 20px; /* Added bottom padding */
+  }
+  
+  /* Subtle background accent - keeping this very subtle */
+  .bg-accent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(27, 150, 73, 0.02) 0%, rgba(117, 184, 230, 0.02) 100%);
+    z-index: -1;
+  }
+  
+  .content-center {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 800px;
+    position: relative;
+  }
+  
+  /* Subtle left border accent instead of bottom */
+  .content-center:before {
+    content: "";
+    position: absolute;
+    left: -20px;
+    top: 10%;
+    height: 60%;
+    width: 3px;
+    background: linear-gradient(to bottom, #1b9649, #75b8e6);
+    border-radius: 3px;
+  }
+  
+  .main-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    color: #1a2601;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-align: left;
+  }
+  
+  .tagline {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 400;
+    text-align: left;
+  }
+  
+  /* Added description style */
+  .description {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 600px;
+    text-align: left;
+  }
+  
+  /* Achievements section with reduced spacing */
+  .achievements {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    justify-content: flex-start;
+  }
+  
+  .achievement {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .number {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1b9649;
+    line-height: 1.2;
+  }
+  
+  .label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 0.8rem;
+    justify-content: flex-start;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .primary-buttons {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .btn {
+    font-family: 'Open Sans', sans-serif;
+    padding: 10px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .btn-dark {
+    background-color: #1a2601;
+    color: white;
+  }
+  
+  .btn-light {
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+  }
+  
+  .btn-green {
+    background-color: #1b9649; /* Dark green from logo */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .icon-phone {
+    margin-right: 5px;
+  }
+  
+  .contact-button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* About Us Section Styles */
+  .about-container {
+    padding: 50px 0 60px;
+    background-color: #f5f5f5;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .about-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+  
+  .about-content-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  
+  .about-image-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .about-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .about-image:hover {
+    transform: translateY(-5px);
+  }
+  
+  .about-text-side {
+    flex: 2;
+  }
+  
+  .about-text {
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .about-text strong {
+    color: #1b9649;
+    font-weight: 600;
+  }
+  
+  /* Timeline styling */
+  .about-timeline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .timeline-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 120px;
+    position: relative;
+  }
+  
+  .timeline-marker {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(27, 150, 73, 0.1) 0%, rgba(117, 184, 230, 0.1) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .timeline-marker:before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #1b9649;
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+  
+  .timeline-content h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #1a2601;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+  }
+  
+  .timeline-content p {
+    color: #666;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  
+  /* Services Section Styles - reduced top padding and changed background */
+  .services-container {
+    padding: 30px 0 60px; /* Reduced top padding from 60px to 30px */
+    background-color: #f5f5f5;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  /* Section title with reduced margins */
+  .section-title {
+    text-align: center;
+    margin-bottom: 30px; /* Reduced from 40px to 30px */
+  }
+  
+  .section-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #1a2601;
+    margin-bottom: 8px; /* Reduced from 10px to 8px */
+    font-weight: 600;
+  }
+  
+  .section-title p {
+    color: #555;
+    max-width: 650px;
+    margin: 0 auto;
+    font-size: 1rem;
+  }
+  
+  /* New Panel Layout Styles with spacing between panels */
+  /* New Panel Layout Styles with horizontal display on all devices */
+.services-panel-container {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 400px; /* Fixed height for desktop */
+    gap: 4px;
+    background-color: white;
+    padding: 0 4px;
+    box-sizing: border-box;
+    margin-bottom: 70px;
+  }
+  
+  .service-panel {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    cursor: pointer;
+    min-width: 0; /* Allow panels to shrink below content size */
+  }
+  
+  .service-panel:hover {
+    flex: 1.5;
+  }
+  
+  .panel-image {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+  
+  .panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  
+  .panel-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+  }
+  
+  .service-panel:hover .panel-overlay {
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .panel-title {
+    position: absolute;
+    bottom: 30px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .service-panel:hover .panel-title {
+    transform: translateY(-10px);
+  }
+  
+  /* Services Details Container - changed to match main page background */
+  .services-details-container {
+    background-color: #f5f5f5; /* Same as body background */
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  /* Service Section - simplified styles */
+  .service-section {
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    scroll-margin-top: 80px;
+  }
+  
+  .service-section:last-child {
+    border-bottom: none;
+  }
+  
+  .service-section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    /* Removed background color, border radius and box shadow for a cleaner look */
+  }
+  
+  /* Service Header - simplified and centered */
+  .service-header-simple {
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center; /* Center the title */
+  }
+  
+  .service-header-simple h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: #1a2601;
+    margin: 0;
+    padding-bottom: 15px;
+    position: relative;
+    display: inline-block;
+    text-align: center; /* Ensure title is centered */
+    width: 100%; /* Make title span full width */
+  }
+  
+  .service-header-simple h3:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%; /* Center the underline */
+    transform: translateX(-50%); /* Center the underline */
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(to right, #1b9649, #75b8e6);
+    border-radius: 3px;
+  }
+  
+  /* Content Wrapper - vertically center all content */
+  .service-content-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: center; /* Changed from flex-start to center */
+  }
+  
+  /* Image Side - centered vertically */
+  .service-image-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Changed from flex-start to center */
+  }
+  
+  .service-side-image {
+    width: 100%;
+    height: auto;
+    max-height: 450px; /* Added max-height to maintain consistent height */
+    object-fit: cover;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .service-side-image:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Text Side - centered vertically */
+  .service-text-side {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  /* Service Item Wrapper */
+  .service-item-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+  
+  /* Service Item - simplified */
+  .service-item-simple {
+    padding: 8px 0;
+    position: relative;
+    padding-left: 20px;
+    transition: transform 0.2s ease;
+  }
+  
+  .service-item-simple:hover {
+    transform: translateX(5px);
+  }
+  
+  .service-item-simple:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #1b9649;
+    border-radius: 50%;
+  }
+  
+  .service-item-simple span {
+    font-size: 1rem;
+    color: #444;
+    line-height: 1.4;
+  }
+  
+  /* Simple note */
+  .service-note-simple {
+    margin-top: 25px;
+    color: #666;
+    font-style: italic;
+    font-size: 0.95rem;
+  }
+  
+  /* Add smooth scrolling for the whole page */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* New hero image styles */
+  .hero-image {
+    position: absolute;
+    right: 20%; /* Keeps the horizontal position the same */
+    top: 40%; /* Adjusted more up (from 45% to 40%) */
+    transform: translateY(-50%);
+    width: 300px;
+    height: auto;
+    z-index: 1;
+  }
+  
+  .company-image {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+  }
+  
+  /* References Section Styles */
+  .references-container {
+    padding: 50px 0 70px;
+    background-color: #f9f9f9;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  /* Logo Showcase */
+  .logo-showcase {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  }
+  
+  .logo-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+  
+  .logo-row:last-child {
+    margin-bottom: 0;
+  }
+  
+  .logo-item {
+    width: 150px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    opacity: 0.75;
+    transition: all 0.3s ease;
+  }
+  
+  .logo-item:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  
+  .logo-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: all 0.3s ease;
+  }
+  
+  /* Featured References */
+  .featured-references {
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+  
+  .featured-reference {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+  }
+  
+  .featured-logo {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 30px;
+    flex-shrink: 0;
+  }
+  
+  .featured-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
+  .featured-content {
+    flex: 1;
+  }
+  
+  .featured-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #1a2601;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  
+  .featured-content p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  .company-name {
+    display: block;
+    color: #1b9649;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  
+  .button-center {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Simple Two-Column Contact Section Styles */
+  .simple-contact-container {
+    padding: 60px 0;
+    background-color: #ffffff;
+    width: 100%;
+  }
+  
+  /* Centered Title */
+  .simple-title {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  
+  .simple-title h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: #1a2601;
+    margin-bottom: 10px;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .simple-title h2:after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #1b9649;
+  }
+  
+  .simple-title p {
+    color: #555;
+    font-size: 1.1rem;
+  }
+  
+  .simple-contact-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+  }
+  
+  /* Two Column Layout */
+  .simple-contact-columns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  
+  /* Left Column: Office Locations */
+  .simple-locations-column {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .simple-locations-column h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #1a2601;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1b9649;
+    display: inline-block;
+  }
+  
+  .simple-location-item {
+    margin-bottom: 30px;
+    position: relative;
+  }
+  
+  .simple-location-item h4 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.2rem;
+    color: #1b9649;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+  }
+  
+  .simple-location-item p {
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+  }
+  
+  /* Right Column: Contact Methods */
+  .simple-contact-methods-column {
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .simple-contact-methods-column h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #1a2601;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1b9649;
+    display: inline-block;
+  }
+  
+  .simple-contact-method {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .simple-contact-method:hover {
+    transform: translateX(5px);
+  }
+  
+  .simple-method-icon {
+    width: 44px;
+    height: 44px;
+    background-color: rgba(27, 150, 73, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #1b9649;
+    flex-shrink: 0;
+  }
+  
+  .simple-method-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .simple-method-label {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 3px;
+  }
+  
+  .simple-method-value {
+    font-size: 1.05rem;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .simple-method-value:hover {
+    color: #1b9649;
+  }
+  
+  /* Contact Methods Two-Column Layout */
+  .contact-methods-columns {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+  }
+  
+  .contact-methods-column {
+    flex: 1;
+    min-width: 140px;
+  }
+  
+  /* Vertical Accent for Section Titles */
+  .vertical-accent-title {
+    position: relative;
+    padding-left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #1a2601;
+    margin-bottom: 20px;
+    font-weight: 600;
+    display: inline-block;
+    border-bottom: none !important;
+  }
+  
+  .vertical-accent-title:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to bottom, #1b9649, #75b8e6);
+    border-radius: 3px;
+  }
+  
+  /* Override the previous border-bottom styling for these headers */
+  .simple-locations-column h3.vertical-accent-title,
+  .simple-contact-methods-column h3.vertical-accent-title {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  
+  /* Map Contact Container Styles */
+  .map-contact-container {
+    padding: 60px 0 80px; /* Increased bottom padding */
+    background-color: #f5f5f5;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .map-contact-content {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 30px;
+  }
+  
+  /* Map Column Styles */
+ /* Map Column Styles - Fixed for mobile */
+.map-column {
+    flex: 1.2;
+    position: relative;
+    width: 100%; /* Ensure it takes full width on mobile */
+    min-height: 300px; /* Minimum height to ensure visibility */
+  }
+  
+  .map-container {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    position: relative;
+  }
+  
+  /* Important fix for Google Maps on mobile */
+  #google-map {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 300px !important;
+    position: relative !important;
+    border-radius: 10px;
+  }
+  
+  .map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .map-marker {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    pointer-events: auto;
+  }
+  
+  .marker-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background-color: #1b9649;
+    border-radius: 50%;
+    z-index: 2;
+  }
+  
+  .marker-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: rgba(27, 150, 73, 0.3);
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(2);
+      opacity: 0;
+    }
+  }
+  
+  .marker-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    border-radius: 6px;
+    padding: 8px 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 120px;
+    text-align: center;
+    margin-bottom: 8px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .marker-tooltip:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+  
+  .map-marker:hover .marker-tooltip {
+    opacity: 1;
+  }
+  
+  .marker-tooltip h4 {
+    margin: 0 0 4px 0;
+    font-size: 0.9rem;
+    color: #1a2601;
+  }
+  
+  .marker-tooltip p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: #666;
+  }
+  
+  /* Ensure Google Maps gets proper dimensions and is visible */
+  .gm-style {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  /* Contact Info Column Styles */
+  .contact-info-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: auto; /* Ensure it expands to fit content */
+  }
+  
+  /* Office Tabs Styles */
+  .office-tabs {
+    display: flex;
+    gap: 2px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .office-tab {
+    flex: 1;
+    padding: 12px 5px;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    transition: all 0.3s ease;
+  }
+  
+  .office-tab.active {
+    background-color: #1b9649;
+    color: white;
+  }
+  
+  .office-tab:hover:not(.active) {
+    background-color: #e8e8e8;
+  }
+  
+  /* Office Panels Styles */
+  .office-panels {
+    position: relative;
+    flex-grow: 1;
+    margin-bottom: 20px; /* Added space at the bottom */
+  }
+  
+  .office-panel {
+    display: none;
+    height: auto; /* Changed from 100% to auto */
+  }
+  
+  .office-panel.active {
+    display: block;
+  }
+  
+  /* Office Card Styles - Fixed to include all content */
+  .office-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    height: auto; /* Changed from fixed calc to auto */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px; /* Added margin for spacing */
+  }
+  
+  .office-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .office-icon {
+    width: 48px;
+    height: 48px;
+    background-color: rgba(27, 150, 73, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #1b9649;
+  }
+  
+  .office-header h3 {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #1a2601;
+    font-weight: 600;
+  }
+  
+  .office-address {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .office-address p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+  
+  /* Contact Methods Styles - Fixed to keep inside container */
+  .contact-methods {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 15px; /* Added margin to ensure spacing */
+    width: 100%; /* Ensure it takes full width */
+  }
+  
+  .contact-method {
+    display: flex;
+    align-items: center;
+    width: 100%; /* Ensure it takes full width of parent */
+  }
+  
+  .method-icon {
+    width: 38px;
+    height: 38px;
+    background-color: rgba(27, 150, 73, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: #1b9649;
+    flex-shrink: 0; /* Prevent the icon from shrinking */
+  }
+  
+  .contact-method a {
+    color: #444;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+    word-break: break-word; /* Allow breaking of long email addresses */
+  }
+  
+  .contact-method a:hover {
+    color: #1b9649;
+  }
+  
+  /* Contact Channels Card Styles */
+  .contact-channels-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-top: 20px;
+    width: 100%; /* Ensure full width */
+  }
+  
+  .contact-channels-card h3 {
+    margin: 0 0 20px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #1a2601;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+  }
+  
+  .contact-channels-card h3:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(to right, #1b9649, #75b8e6);
+    border-radius: 2px;
+  }
+  
+  .channels-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  
+  .channel-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 15px 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .channel-item:hover {
+    background-color: rgba(27, 150, 73, 0.05);
+    transform: translateY(-3px);
+  }
+  
+  .channel-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .whatsapp {
+    background-color: #25D366;
+  }
+  
+  .linkedin {
+    background-color: #0077B5;
+  }
+  
+  .instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  }
+  
+  .website {
+    background-color: #1b9649;
+  }
+  
+  .channel-item span {
+    font-size: 0.85rem;
+    color: #444;
+    font-weight: 500;
+  }
+  
+  /* Add specific responsive styles for map */
+  @media (max-width: 1200px) {
+    .hero-image {
+      right: 15%; 
+      width: 250px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .map-contact-content {
+      flex-direction: column;
+    }
+    
+    .map-container {
+      min-height: 400px;
+    }
+    
+    #google-map {
+      min-height: 400px !important;
+    }
+    
+    .channels-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* Adjust service section image and text for consistent layout */
+    #cevre-services .service-content-wrapper,
+    #maden-services .service-content-wrapper {
+      flex-direction: row; /* Keep side by side on tablets */
+    }
+    
+    #cevre-services .service-image-side,
+    #maden-services .service-image-side {
+      order: -1;
+    }
+    
+    /* Ensure the service panels maintain a decent height */
+    .services-panel-container {
+      height: 350px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .home-container {
+      min-height: auto;
+      padding: 30px 5% 30px;
+    }
+    
+    .content-center:before {
+      left: -10px;
+    }
+    
+    .hero-image {
+      position: static;
+      margin: 20px auto;
+      transform: none;
+      width: 100%;
+      max-width: 220px;
+      text-align: center;
+    }
+    
+    .logo-item {
+      width: 130px;
+      height: 70px;
+    }
+    
+    .featured-reference {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .featured-logo {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    
+    .contact-methods-columns {
+      gap: 20px;
+    }
+    
+    .panel-title {
+      font-size: 1.8rem;
+    }
+    
+    .service-section {
+      scroll-margin-top: 60px;
+    }
+    
+    /* Keep horizontal layout for large tablets (768px-992px) */
+    .service-content-wrapper {
+      flex-direction: row; /* Maintain horizontal layout */
+      gap: 30px;
+    }
+    
+    .service-image-side {
+      flex: 1;
+    }
+    
+    .service-text-side {
+      flex: 1;
+    }
+    
+    .service-side-image {
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+    
+    .service-section-content {
+      padding: 0 20px;
+    }
+    
+    /* About section responsive */
+    .about-content-wrapper {
+      flex-direction: row; /* Keep horizontal on larger tablets */
+      gap: 30px;
+    }
+    
+    .about-image-side {
+      flex: 1;
+    }
+    
+    .about-text-side {
+      flex: 1;
+    }
+    
+    .about-image {
+      max-width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+    
+    .about-content {
+      padding: 0 20px;
+    }
+    
+    .timeline-item {
+      min-width: 100px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 2.5rem;
+    }
+    
+    .achievements {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .achievement {
+      min-width: 100px;
+    }
+    
+    .number {
+      font-size: 1.5rem;
+    }
+    
+    .content-center:before {
+      display: none;
+    }
+    
+    .logo-row {
+      gap: 20px;
+    }
+    
+    .logo-item {
+      width: 100px;
+      height: 60px;
+    }
+    
+    .primary-buttons {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .simple-contact-columns {
+      flex-direction: column;
+      gap: 30px;
+    }
+    
+    .simple-title h2 {
+      font-size: 2rem;
+    }
+    
+    .simple-locations-column,
+    .simple-contact-methods-column {
+      width: 100%;
+    }
+    
+    .contact-methods-columns {
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .contact-methods-column {
+      width: 100%;
+    }
+    
+    .vertical-accent-title {
+      padding-left: 15px;
+    }
+    
+    .vertical-accent-title:before {
+      width: 2px;
+    }
+    
+    /* Services panel - keep horizontal on mobile */
+    .services-panel-container {
+      height: 250px; /* Even smaller on small tablets */
+      flex-direction: row; /* Keep horizontal on tablets/mobile */
+    }
+    
+    .service-panel {
+      flex: 1; /* Equal flex */
+      height: 100%;
+    }
+    
+    .service-panel:hover {
+      flex: 1.2; /* Less expansion on hover for mobile */
+    }
+    
+    .panel-title {
+      font-size: 1.5rem;
+      bottom: 20px;
+    }
+    
+    .service-header-simple h3 {
+      font-size: 1.8rem;
+    }
+    
+    .service-item-wrapper {
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+    }
+    
+    /* About section responsive */
+    .timeline-marker {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .timeline-marker:before {
+      width: 25px;
+      height: 25px;
+    }
+    
+    .timeline-content h4 {
+      font-size: 1.2rem;
+    }
+    
+    .about-text {
+      font-size: 1rem;
+    }
+    
+    .map-container {
+      min-height: 350px;
+      margin-bottom: 30px; /* Add space below map on mobile */
+    }
+    
+    #google-map {
+      min-height: 350px !important;
+    }
+    
+    /* Ensure proper stacking on mobile */
+    .map-contact-content {
+      flex-direction: column;
+    }
+    
+    .channels-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .office-header h3 {
+      font-size: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .achievements {
+      flex-direction: row; /* Keep horizontal but with wrapping */
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: space-between;
+    }
+    
+    .achievement {
+      flex: 0 0 45%; /* Take up roughly half the width */
+      align-items: center;
+      text-align: center;
+    }
+    
+    .logo-row {
+      gap: 15px;
+    }
+    
+    .logo-item {
+      width: 80px;
+      height: 50px;
+      padding: 5px;
+    }
+    
+    .simple-title h2 {
+      font-size: 1.8rem;
+    }
+    
+    .simple-title h2:after {
+      width: 40px;
+    }
+    
+    .contact-methods-column .simple-contact-method {
+      flex-direction: row;
+      align-items: center;
+    }
+    
+    .contact-methods-column .simple-method-icon {
+      margin-bottom: 0;
+      margin-right: 15px;
+    }
+    
+    /* Services panel - keep horizontal but smaller on mobile */
+    .services-panel-container {
+      height: 180px; /* Smaller height on phones */
+      margin-bottom: 40px; /* Less margin underneath */
+      flex-direction: row; /* Ensure it stays horizontal */
+    }
+    
+    .service-panel {
+      height: 100%;
+    }
+    
+    .service-panel:hover {
+      flex: 1.1; /* Even less expansion on hover for small screens */
+    }
+    
+    .panel-title {
+      font-size: 1rem; /* Smaller font on mobile */
+      bottom: 15px;
+    }
+    
+    .service-header-simple h3 {
+      font-size: 1.5rem;
+    }
+    
+    .service-item-wrapper {
+      grid-template-columns: 1fr; /* Single column on mobile */
+    }
+    
+    .service-item-simple span {
+      font-size: 0.95rem;
+    }
+    
+    /* Contact card fixes for mobile */
+    .office-card {
+      padding: 20px 15px;
+    }
+    
+    .contact-method {
+      flex-direction: row; /* Keep this as row */
+      align-items: center;
+      width: 100%;
+    }
+    
+    .method-icon {
+      margin-right: 15px;
+      margin-bottom: 0;
+    }
+    
+    /* Make sure email addresses don't overflow */
+    .contact-method a {
+      word-break: break-word;
+      font-size: 0.95rem;
+    }
+    
+    /* Fix for small screens - keep the contact method icons aligned */
+    .contact-methods {
+      width: 100%;
+    }
+    
+    /* About section responsive */
+    .about-timeline {
+      flex-direction: row; /* Keep horizontal with wrap */
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    
+    .timeline-item {
+      flex: 0 0 45%; /* Take roughly half the width */
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+    
+    .timeline-marker {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 0;
+    }
+    
+    .timeline-marker:before {
+      width: 20px;
+      height: 20px;
+    }
+    
+    .map-container {
+      min-height: 250px;
+    }
+    
+    #google-map {
+      min-height: 250px !important;
+    }
+    
+    .channels-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    
+    .channel-icon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .channel-item span {
+      font-size: 0.8rem;
+    }
+    
+    .office-tabs {
+      flex-direction: row; /* Keep horizontal */
+      gap: 1px;
+    }
+    
+    .office-tab {
+      padding: 10px 5px;
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .main-title {
+      font-size: 2rem;
+    }
+    
+    .tagline {
+      font-size: 1rem;
+    }
+    
+    /* Keep service panels horizontal even on very small screens */
+    .services-panel-container {
+      height: 150px; /* Even smaller for very small screens */
+      flex-direction: row; /* Force horizontal */
+    }
+    
+    .panel-title {
+      font-size: 0.9rem;
+      bottom: 10px;
+    }
+    
+    .office-tabs {
+      flex-direction: column; /* Switch to vertical for very small screens */
+      gap: 1px;
+    }
+    
+    .office-tab {
+      padding: 8px 5px;
+    }
+    
+    .achievement {
+      flex: 0 0 100%; /* Full width on very small screens */
+      margin-bottom: 10px;
+    }
+    
+    .contact-method a {
+      font-size: 0.9rem;
+    }
+  }

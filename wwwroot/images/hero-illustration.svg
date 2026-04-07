@@ -1,0 +1,40 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Elements -->
+  <defs>
+    <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1b9649" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#1b9649" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="waterGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#75b8e6" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#75b8e6" stop-opacity="0.8" />
+    </linearGradient>
+    <linearGradient id="soilGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B4513" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#5D3A1A" stop-opacity="0.8" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Layer -->
+  <rect x="50" y="50" width="700" height="500" rx="20" fill="#f9f9f9" stroke="#e0e0e0" stroke-width="2" opacity="0.7" />
+  
+  <!-- Landscape Base -->
+  <path d="M100,450 Q400,400 700,450 L700,500 L100,500 Z" fill="url(#soilGradient)" />
+  <path d="M100,460 Q250,440 400,460 Q550,480 700,460 L700,500 L100,500 Z" fill="#E9DDC7" opacity="0.8" />
+  
+  <!-- Water Element -->
+  <path d="M200,450 Q300,420 400,450 Q500,480 600,450 L600,500 L200,500 Z" fill="url(#waterGradient)" opacity="0.7" />
+  <path d="M220,470 Q320,450 420,470 Q520,490 580,470" fill="none" stroke="#75b8e6" stroke-width="2" stroke-dasharray="5,5" />
+  
+  <!-- Trees & Plants -->
+  <!-- Large Tree -->
+  <g transform="translate(180, 350)">
+    <rect x="-10" y="0" width="20" height="100" fill="#5D3A1A" />
+    <ellipse cx="0" cy="-40" rx="60" ry="80" fill="url(#leafGradient)" />
+    <ellipse cx="0" cy="-80" rx="40" ry="60" fill="#1b9649" opacity="0.8" />
+  </g>
+  
+  <!-- Small Trees -->
+  <g transform="translate(600, 400)">
+    <rect x="-7" y="0" width="14" height="60" fill="#5D3A1A" />
+    <ellipse cx="0" cy="-30" rx="40" ry="50" fill="url(#leafGradient)" />
