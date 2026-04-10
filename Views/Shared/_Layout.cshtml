@@ -10,23 +10,17 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <!-- Leaflet (OpenStreetMap) — ücretsiz, Google Maps API gerektirmez -->
     <link rel="stylesheet" href="~/lib/leaflet/leaflet.min.css" />
     <script src="~/lib/leaflet/leaflet.min.js"></script>
 
     <style>
-        /* =====================
-           GLOBAL RESET & BASE
-        ======================== */
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Open Sans', sans-serif;
@@ -56,7 +50,6 @@
             transition: background 0.35s ease, border-color 0.35s ease, backdrop-filter 0.35s ease;
         }
 
-        /* Scrolled state — added via JS */
         .hus-navbar.scrolled {
             background: rgba(255, 255, 255, 0.97);
             border-bottom: 1px solid #e8e0d0;
@@ -78,10 +71,9 @@
             object-fit: contain;
         }
 
-        .hus-navbar.scrolled .nav-logo img {
-            filter: none;
-        }
+        .hus-navbar.scrolled .nav-logo img { filter: none; }
 
+        /* Desktop nav links */
         .hus-navbar .nav-links {
             display: flex;
             align-items: center;
@@ -99,18 +91,11 @@
             transition: color 0.2s ease;
         }
 
-        .hus-navbar.scrolled .nav-links a {
-            color: #3d3d3a;
-        }
+        .hus-navbar.scrolled .nav-links a { color: #3d3d3a; }
+        .hus-navbar .nav-links a:hover { color: #d4a843; }
+        .hus-navbar.scrolled .nav-links a:hover { color: #2d5a3d; }
 
-        .hus-navbar .nav-links a:hover {
-            color: #d4a843;
-        }
-
-        .hus-navbar.scrolled .nav-links a:hover {
-            color: #2d5a3d;
-        }
-
+        /* Desktop CTA button */
         .hus-navbar .nav-cta {
             position: absolute;
             right: 40px;
@@ -138,15 +123,8 @@
             backdrop-filter: none;
         }
 
-        .hus-navbar .nav-cta:hover {
-            background: rgba(255,255,255,0.30);
-            color: #ffffff;
-        }
-
-        .hus-navbar.scrolled .nav-cta:hover {
-            background: #1e3f2b;
-            color: #ffffff;
-        }
+        .hus-navbar .nav-cta:hover { background: rgba(255,255,255,0.30); color: #ffffff; }
+        .hus-navbar.scrolled .nav-cta:hover { background: #1e3f2b; color: #ffffff; }
 
         .hus-navbar .nav-cta svg {
             width: 14px;
@@ -155,11 +133,96 @@
         }
 
         /* =====================
-           MAIN CONTENT OFFSET
+           HAMBURGER BUTTON
         ======================== */
-        main[role="main"] {
-            padding-top: 0; /* hero is full-height, no offset needed */
+        .nav-hamburger {
+            display: none;
+            position: absolute;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1100;
         }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hus-navbar.scrolled .nav-hamburger span { background: #2c2c2a; }
+
+        .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* =====================
+           MOBILE MENU
+        ======================== */
+        .nav-mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+        }
+
+        .nav-mobile-menu.open { display: flex; }
+
+        .nav-mobile-menu a {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #2c2c2a;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-mobile-menu a:hover { color: #2d5a3d; }
+
+        .nav-mobile-menu .nav-mobile-cta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #2d5a3d;
+            color: #ffffff !important;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-size: 16px !important;
+            margin-top: 8px;
+        }
+
+        /* =====================
+           RESPONSIVE
+        ======================== */
+        @@media (max-width: 768px) {
+            .hus-navbar {
+                padding: 0 20px;
+                height: 80px;
+            }
+
+            .hus-navbar .nav-logo img { height: 65px; }
+            .hus-navbar .nav-links { display: none; }
+            .hus-navbar .nav-cta { display: none; }
+            .nav-hamburger { display: flex; }
+        }
+
+        main[role="main"] { padding-top: 0; }
     </style>
 </head>
 <body>
@@ -170,6 +233,7 @@
             <img src="~/logo.png" alt="Huş Mühendislik Logo" />
         </a>
 
+        <!-- Desktop Links -->
         <ul class="nav-links">
             <li><a href="#about"      onclick="scrollToSection(event,'about')">Hakkımızda</a></li>
             <li><a href="#services"   onclick="scrollToSection(event,'services')">Hizmetler</a></li>
@@ -177,25 +241,62 @@
             <li><a href="#contact"    onclick="scrollToSection(event,'contact')">İletişim</a></li>
         </ul>
 
+        <!-- Desktop CTA -->
         <a href="#contact" class="nav-cta" onclick="scrollToSection(event,'contact')">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
             Bize Ulaşın
         </a>
+
+        <!-- Hamburger Button -->
+        <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menü">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="nav-mobile-menu" id="mobileMenu">
+        <a href="#about"      onclick="closeMobileMenu(); scrollToSection(event,'about')">Hakkımızda</a>
+        <a href="#services"   onclick="closeMobileMenu(); scrollToSection(event,'services')">Hizmetler</a>
+        <a href="#references" onclick="closeMobileMenu(); scrollToSection(event,'references')">Referanslar</a>
+        <a href="#contact"    onclick="closeMobileMenu(); scrollToSection(event,'contact')">İletişim</a>
+        <a href="#contact" class="nav-mobile-cta" onclick="closeMobileMenu(); scrollToSection(event,'contact')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Bize Ulaşın
+        </a>
+    </div>
 
     <main role="main">
         @RenderBody()
     </main>
 
-    <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/contact-map.js" asp-append-version="true"></script>
 
     <script>
+        /* ---- Hamburger ---- */
+        var hamburgerBtn = document.getElementById('hamburgerBtn');
+        var mobileMenu = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', function () {
+            hamburgerBtn.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+        });
+
+        function closeMobileMenu() {
+            hamburgerBtn.classList.remove('open');
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
         /* ---- Scroll helpers ---- */
         function scrollToSection(event, sectionId) {
             if (event) event.preventDefault();
@@ -213,25 +314,21 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        /* Legacy aliases used in Index.cshtml */
         function scrollToServiceSection(sectionId) { scrollToSection(null, sectionId); }
         function scrollToAbout(e)      { scrollToSection(e, 'about'); }
         function scrollToReferences(e) { scrollToSection(e, 'references'); }
         function scrollToServices(e)   { scrollToSection(e, 'services'); }
         function scrollToContact(e)    { scrollToSection(e, 'contact'); }
 
-        /* Google Maps */
         window.onload = function () {
             if (typeof loadGoogleMapsScript === 'function') {
                 loadGoogleMapsScript();
             }
         };
 
-        /* Active nav highlight on scroll */
         var sections = ['about', 'services', 'references', 'contact'];
-
-        /* Navbar transparent → white on scroll */
         var navbar = document.querySelector('.hus-navbar');
+
         function updateNavbar() {
             if (window.pageYOffset > 60) {
                 navbar.classList.add('scrolled');
@@ -239,6 +336,7 @@
                 navbar.classList.remove('scrolled');
             }
         }
+
         window.addEventListener('scroll', updateNavbar);
         updateNavbar();
 

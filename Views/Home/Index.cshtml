@@ -6,22 +6,10 @@
      HERO SECTION
 ======================== -->
 <section id="hero" class="hus-hero">
-
-    <!-- Background video -->
-    <video class="hus-hero__video"
-           autoplay
-           muted
-           playsinline
-           preload="auto">
+    <video class="hus-hero__video" autoplay muted playsinline preload="auto">
         <source src="~/videos/hero-video.mp4" type="video/mp4" />
     </video>
-
-    <!-- Dark overlay over video -->
     <div class="hus-hero__overlay"></div>
-
-    
-
-    <!-- Scroll cue -->
     <div class="hus-hero__scroll-cue" onclick="scrollToSection(null,'about')">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <polyline points="6 9 12 15 18 9"/>
@@ -39,24 +27,15 @@
             hasScrolled = true;
             var about = document.getElementById('about');
             if (about) {
-                window.scrollTo({
-                    top: about.offsetTop - 70,
-                    behavior: 'smooth'
-                });
+                window.scrollTo({ top: about.offsetTop - 70, behavior: 'smooth' });
             }
         }
 
-        /* Video bitince scroll */
         video.addEventListener('ended', doAutoScroll);
-
-        /* Fallback: video süresinin %99'una gelince scroll */
         video.addEventListener('timeupdate', function () {
-            if (video.duration && video.currentTime >= video.duration - 0.3) {
-                doAutoScroll();
-            }
+            if (video.duration && video.currentTime >= video.duration - 0.3) doAutoScroll();
         });
 
-        /* Kullanıcı hero'ya geri dönünce videoyu baştan oynat */
         window.addEventListener('scroll', function () {
             if (window.pageYOffset < 50) {
                 hasScrolled = false;
@@ -69,7 +48,7 @@
 
 <style>
     /* =====================
-       HERO — VIDEO BG
+       HERO
     ======================== */
     .hus-hero {
         position: relative;
@@ -83,7 +62,6 @@
         text-align: center;
     }
 
-    /* Full-cover background video */
     .hus-hero__video {
         position: absolute;
         inset: 0;
@@ -95,139 +73,14 @@
         pointer-events: none;
     }
 
-    /* Dark overlay so content is readable */
     .hus-hero__overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0.35) 0%,
-            rgba(0, 0, 0, 0.50) 60%,
-            rgba(0, 0, 0, 0.65) 100%
-        );
+        background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.50) 60%, rgba(0,0,0,0.65) 100%);
         z-index: 1;
         pointer-events: none;
     }
 
-    .hus-hero__content {
-        position: relative;
-        z-index: 2;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        max-width: 640px;
-        width: 100%;
-    }
-
-    /* Logo */
-    .hus-hero__logo-wrap {
-        margin-bottom: 48px;
-    }
-
-    .hus-hero__logo {
-        height: clamp(120px, 20vw, 220px);
-        width: auto;
-        max-width: 480px;
-        object-fit: contain;
-        /* drop-shadow so logo pops on any video frame */
-        filter: drop-shadow(0 2px 24px rgba(0,0,0,0.45));
-    }
-
-    /* Stats — semi-transparent dark card */
-    .hus-hero__stats {
-        display: flex;
-        align-items: stretch;
-        background: rgba(255, 255, 255, 0.12);
-        border: 1px solid rgba(255, 255, 255, 0.25);
-        border-radius: 12px;
-        overflow: hidden;
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        margin-bottom: 44px;
-    }
-
-    .hus-hero__stat {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 36px;
-        gap: 5px;
-    }
-
-    .hus-hero__stat-divider {
-        width: 1px;
-        background: rgba(255, 255, 255, 0.25);
-        align-self: stretch;
-    }
-
-    .hus-hero__stat-num {
-        font-family: 'Playfair Display', serif;
-        font-size: 30px;
-        font-weight: 700;
-        color: #d4a843;
-        line-height: 1;
-    }
-
-    .hus-hero__stat-label {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 10px;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.80);
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        white-space: nowrap;
-    }
-
-    /* Buttons */
-    .hus-hero__buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 14px;
-        width: 100%;
-    }
-
-    .hus-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        font-family: 'Open Sans', sans-serif;
-        font-size: 12.5px;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        padding: 12px 26px;
-        border-radius: 8px;
-        text-decoration: none;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        border: 1.5px solid transparent;
-    }
-
-    .hus-btn--outline {
-        background: rgba(255,255,255,0.1);
-        color: #ffffff;
-        border-color: rgba(255,255,255,0.6);
-        backdrop-filter: blur(4px);
-    }
-
-    .hus-btn--outline:hover {
-        background: rgba(255,255,255,0.25);
-        color: #ffffff;
-    }
-
-    .hus-btn--gold {
-        background: #d4a843;
-        color: #ffffff;
-        border-color: #d4a843;
-    }
-
-    .hus-btn--gold:hover {
-        background: #b8902e;
-        border-color: #b8902e;
-        color: #ffffff;
-    }
-
-    /* Scroll cue */
     .hus-hero__scroll-cue {
         position: absolute;
         bottom: 28px;
@@ -247,25 +100,273 @@
         50%       { transform: translateX(-50%) translateY(6px); }
     }
 
-    /* Responsive */
     @@media (max-width: 640px) {
-        .hus-hero { padding: 90px 20px 80px; }
-        .hus-hero__stat { padding: 16px 20px; }
-        .hus-hero__stat-label { font-size: 9px; letter-spacing: 0.8px; }
-        .hus-hero__stat-num { font-size: 24px; }
-        .hus-btn { justify-content: center; width: 100%; }
+        .hus-hero {
+            padding: 90px 20px 80px;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            position: relative;
+        }
+
+        .hus-hero__video {
+            object-position: center center;
+        }
+    }
+
+    /* =====================
+       ABOUT SECTION
+    ======================== */
+    .about-content-wrapper {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .about-image-side {
+        flex: 1;
+    }
+
+    .about-image {
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .about-text-side {
+        flex: 1;
+    }
+
+    @@media (max-width: 768px) {
+        .about-content-wrapper {
+            flex-direction: column;
+        }
+
+        .about-image-side {
+            width: 100%;
+        }
+
+        div[id="services"].about-container {
+            padding: 60px 20px !important;
+        }
+    }
+
+    /* =====================
+       SERVICE PANELS
+    ======================== */
+    .services-panel-container {
+        display: flex;
+        gap: 16px;
+    }
+
+    .service-panel {
+        flex: 1;
+        cursor: pointer;
+    }
+
+    .panel-image {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        aspect-ratio: 3/4;
+    }
+
+    .panel-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .service-panel:hover .panel-image img { transform: scale(1.05); }
+
+    .panel-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);
+    }
+
+    .panel-title {
+        position: absolute;
+        bottom: 16px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+
+    @@media (max-width: 768px) {
+        .services-panel-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .panel-image {
+            aspect-ratio: 1/1;
+        }
+
+        .panel-title {
+            font-size: 13px;
+        }
+
+        div[id="about"].about-container {
+            padding: 60px 20px !important;
+        }
+    }
+
+    /* =====================
+       SERVICE SECTIONS
+    ======================== */
+    .service-content-wrapper {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .service-text-side {
+        flex: 1;
+    }
+
+    .service-image-side {
+        flex: 1;
+    }
+
+    .service-side-image {
+        width: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+        max-height: 400px;
+    }
+
+    @@media (max-width: 768px) {
+        .service-content-wrapper {
+            flex-direction: column !important;
+        }
+
+        /* Çevre ve Maden'de resim solda — mobilde her zaman önce resim */
+        .service-content-wrapper .service-image-side {
+            order: -1;
+            width: 100%;
+        }
+
+        .service-side-image {
+            max-height: 220px;
+            width: 100%;
+        }
+
+        .service-section {
+            padding: 30px 20px;
+        }
+    }
+
+    /* =====================
+       REFERENCES
+    ======================== */
+    .logo-showcase {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logo-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .logo-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-item img {
+        max-height: 60px;
+        max-width: 120px;
+        object-fit: contain;
+        filter: grayscale(100%);
+        opacity: 0.7;
+        transition: all 0.2s ease;
+    }
+
+    .logo-item img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    @@media (max-width: 768px) {
+        .logo-row {
+            gap: 16px;
+        }
+
+        .logo-item img {
+            max-height: 40px;
+            max-width: 80px;
+        }
+
+        .references-container {
+            padding: 60px 20px;
+        }
+    }
+
+    /* =====================
+       CONTACT
+    ======================== */
+    .map-contact-content {
+        display: flex;
+        gap: 40px;
+    }
+
+    .map-column {
+        flex: 1;
+    }
+
+    .map-container {
+        height: 400px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .contact-info-column {
+        flex: 1;
+    }
+
+    @@media (max-width: 768px) {
+        .map-contact-content {
+            flex-direction: column;
+        }
+
+        .map-container {
+            height: 250px;
+        }
+
+        .map-contact-container {
+            padding: 60px 20px;
+        }
+
+        .office-tabs {
+            display: flex;
+            gap: 8px;
+        }
+
+        .office-tab {
+            flex: 1;
+            font-size: 11px;
+            padding: 8px 4px;
+        }
     }
 </style>
 
-
 <!-- About Us Section -->
 <div id="services" class="about-container" style="padding: 80px 40px; min-height: 600px;">
-    <!-- Section Title -->
     <div class="section-title">
         <h2>Hakkımızda</h2>
     </div>
-    
-    <!-- About Us Content -->
     <div class="about-content">
         <div class="about-content-wrapper">
             <div class="about-image-side">
@@ -278,29 +379,19 @@
                 <p class="about-text">
                     O tarihten bu yana sektörde hizmet veren firma, orman izin dosyası, özel ağaçlandırma proje ve uygulaması ve <strong>ÇED-proje tanıtım dosyası ile orman arazilerinin tahsisi ve özel ağaçlandırma proje ve uygulama</strong> konularında sektörde lider, <strong>sanayicilerin/yatırımcıların/madencilerin çevre mevzuatı</strong> konularında güvenilir bir çözüm ortağı olarak faaliyetlerine devam etmektedir.
                 </p>
-                
-                <!-- Timeline/Achievements -->
                 <div class="about-timeline">
                     <div class="timeline-item">
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4>1994</h4>
-                            <p>Şirket kuruluşu</p>
-                        </div>
+                        <div class="timeline-content"><h4>1994</h4><p>Şirket kuruluşu</p></div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4>30+ Yıl</h4>
-                            <p>Sektör deneyimi</p>
-                        </div>
+                        <div class="timeline-content"><h4>30+ Yıl</h4><p>Sektör deneyimi</p></div>
                     </div>
                     <div class="timeline-item">
                         <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4>50+</h4>
-                            <p>Tamamlanan proje</p>
-                        </div>
+                        <div class="timeline-content"><h4>50+</h4><p>Tamamlanan proje</p></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -309,14 +400,10 @@
 
 <!-- Services Section -->
 <div id="about" class="about-container" style="padding-top: 100px; padding-bottom: 100px;">
-    <!-- Section Title -->
     <div class="section-title" style="margin-top: 0;">
         <h2>Hizmetlerimiz</h2>
     </div>
-    
-    <!-- New Panel Layout for Services -->
     <div class="services-panel-container">
-        <!-- Orman Panel -->
         <div class="service-panel" onclick="scrollToServiceSection('orman-services')">
             <div class="panel-image">
                 <img src="~/images/orman.jpg" alt="Orman Hizmetleri">
@@ -324,8 +411,6 @@
                 <h3 class="panel-title">ORMAN</h3>
             </div>
         </div>
-        
-        <!-- Çevre Panel -->
         <div class="service-panel" onclick="scrollToServiceSection('cevre-services')">
             <div class="panel-image">
                 <img src="~/images/çevre.jpg" alt="Çevre Hizmetleri">
@@ -333,8 +418,6 @@
                 <h3 class="panel-title">ÇEVRE</h3>
             </div>
         </div>
-        
-        <!-- Peyzaj Panel -->
         <div class="service-panel" onclick="scrollToServiceSection('peyzaj-services')">
             <div class="panel-image">
                 <img src="~/images/peyzaj.jpg" alt="Peyzaj Hizmetleri">
@@ -342,8 +425,6 @@
                 <h3 class="panel-title">PEYZAJ</h3>
             </div>
         </div>
-        
-        <!-- Maden Panel -->
         <div class="service-panel" onclick="scrollToServiceSection('maden-services')">
             <div class="panel-image">
                 <img src="~/images/maden.jpg" alt="Maden Hizmetleri">
@@ -352,496 +433,327 @@
             </div>
         </div>
     </div>
-    
-<!-- Service Sections Below Panels -->
-<div class="services-details-container">
-    <!-- Orman Services Section (Image on Right) -->
-<div id="orman-services" class="service-section">
-    <div class="service-section-content">
-        <div class="service-content-wrapper">
-            <div class="service-text-side">
-                <!-- Title moved inside text-side for vertical centering -->
-                <div class="service-header-simple">
-                    <h3>Orman Hizmetleri</h3>
-                </div>
-                <div class="service-item-wrapper">
-                    <div class="service-item-simple">
-                        <span>Orman izin dosyaları</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Özel ağaçlandırma</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Mevzuat danışmanlığı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Mesire yeri projelendirme</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Orman endüstri ürünleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Rehabilitasyon projeleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Maden danışmannlığı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Harita Hizmetleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Aplikasyon hizmetleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Drone görüntüleme</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>İmalat haritaları</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Alan tahsis projeleri</span>
-                    </div>
-                </div>
-            </div>
-            <div class="service-image-side">
-                <img src="~/images/ormanhiz3.jpg" alt="Orman Hizmetleri" class="service-side-image">
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Çevre Services Section (Image on Left) -->
-<div id="cevre-services" class="service-section">
-    <div class="service-section-content">
-        <div class="service-content-wrapper">
-            <div class="service-image-side">
-                <img src="~/images/çevrehiz5.jpg" alt="Çevre Hizmetleri" class="service-side-image">
-            </div>
-            <div class="service-text-side">
-                <!-- Title moved inside text-side for vertical centering -->
-                <div class="service-header-simple">
-                    <h3>Çevre Hizmetleri</h3>
-                </div>
-                <div class="service-item-wrapper">
-                    <div class="service-item-simple">
-                        <span>ÇED Raporu Hazırlama</span>
+    <div class="services-details-container">
+        <!-- Orman -->
+        <div id="orman-services" class="service-section">
+            <div class="service-section-content">
+                <div class="service-content-wrapper">
+                    <div class="service-text-side">
+                        <div class="service-header-simple"><h3>Orman Hizmetleri</h3></div>
+                        <div class="service-item-wrapper">
+                            <div class="service-item-simple"><span>Orman izin dosyaları</span></div>
+                            <div class="service-item-simple"><span>Özel ağaçlandırma</span></div>
+                            <div class="service-item-simple"><span>Mevzuat danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Mesire yeri projelendirme</span></div>
+                            <div class="service-item-simple"><span>Orman endüstri ürünleri</span></div>
+                            <div class="service-item-simple"><span>Rehabilitasyon projeleri</span></div>
+                            <div class="service-item-simple"><span>Maden danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Harita Hizmetleri</span></div>
+                            <div class="service-item-simple"><span>Aplikasyon hizmetleri</span></div>
+                            <div class="service-item-simple"><span>Drone görüntüleme</span></div>
+                            <div class="service-item-simple"><span>İmalat haritaları</span></div>
+                            <div class="service-item-simple"><span>Alan tahsis projeleri</span></div>
+                        </div>
                     </div>
-                    <div class="service-item-simple">
-                        <span>Çevre danışmanlık</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Atık yönetimi</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Kalite yönetim sistemleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Sürdürülebilir danışmanlığı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Hava kalitesi modelleme</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Proje danışmanlığı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Hidrojeolojik ETÜD raporu</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Tarafsız denetim hizmetleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Mevzuat danışmanlığı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Karbon ayak izi hesplama</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Çalışma ruhsatı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Sıfır atık danışmanlığı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Arıtma sistemleri danışmalığı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Sonndaj raporlama</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Su ayak izi hesaplama</span>
+                    <div class="service-image-side">
+                        <img src="~/images/ormanhiz3.jpg" alt="Orman Hizmetleri" class="service-side-image">
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Peyzaj Services Section (Image on Right) -->
-<div id="peyzaj-services" class="service-section">
-    <div class="service-section-content">
-        <div class="service-content-wrapper">
-            <div class="service-text-side">
-                <!-- Title moved inside text-side for vertical centering -->
-                <div class="service-header-simple">
-                    <h3>Peyzaj Hizmetleri</h3>
-                </div>
-                <div class="service-item-wrapper">
-                    <div class="service-item-simple">
-                        <span>Özel ağaçlandırma uygulamaları</span>
+        <!-- Çevre -->
+        <div id="cevre-services" class="service-section">
+            <div class="service-section-content">
+                <div class="service-content-wrapper">
+                    <div class="service-image-side">
+                        <img src="~/images/çevrehiz5.jpg" alt="Çevre Hizmetleri" class="service-side-image">
                     </div>
-                    <div class="service-item-simple">
-                        <span>3D modelleme uygulamaları</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Fidan ve peyzaj ürün satışları</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Saha uygulamaları</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Sulama projeleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Otomatik sulama sistemi</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Peyzaj danışmanlığı</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Özel projelendirme hizmetleri</span>
+                    <div class="service-text-side">
+                        <div class="service-header-simple"><h3>Çevre Hizmetleri</h3></div>
+                        <div class="service-item-wrapper">
+                            <div class="service-item-simple"><span>ÇED Raporu Hazırlama</span></div>
+                            <div class="service-item-simple"><span>Çevre danışmanlık</span></div>
+                            <div class="service-item-simple"><span>Atık yönetimi</span></div>
+                            <div class="service-item-simple"><span>Kalite yönetim sistemleri</span></div>
+                            <div class="service-item-simple"><span>Sürdürülebilir danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Hava kalitesi modelleme</span></div>
+                            <div class="service-item-simple"><span>Proje danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Hidrojeolojik ETÜD raporu</span></div>
+                            <div class="service-item-simple"><span>Tarafsız denetim hizmetleri</span></div>
+                            <div class="service-item-simple"><span>Mevzuat danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Karbon ayak izi hesaplama</span></div>
+                            <div class="service-item-simple"><span>Çalışma ruhsatı</span></div>
+                            <div class="service-item-simple"><span>Sıfır atık danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Arıtma sistemleri danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Sondaj raporlama</span></div>
+                            <div class="service-item-simple"><span>Su ayak izi hesaplama</span></div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="service-image-side">
-                <img src="~/images/peyzaj-hiz.jpg" alt="Peyzaj Hizmetleri" class="service-side-image">
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Maden Services Section (Image on Left) -->
-<div id="maden-services" class="service-section">
-    <div class="service-section-content">
-        <div class="service-content-wrapper">
-            <div class="service-image-side">
-                <img src="~/images/madenhiz3.jpg" alt="Maden Hizmetleri" class="service-side-image">
-            </div>
-            <div class="service-text-side">
-                <!-- Title moved inside text-side for vertical centering -->
-                <div class="service-header-simple">
-                    <h3>Maden Hizmetleri</h3>
-                </div>
-                <div class="service-item-wrapper">
-                    <div class="service-item-simple">
-                        <span>Maden danışmanlığı</span>
+        <!-- Peyzaj -->
+        <div id="peyzaj-services" class="service-section">
+            <div class="service-section-content">
+                <div class="service-content-wrapper">
+                    <div class="service-text-side">
+                        <div class="service-header-simple"><h3>Peyzaj Hizmetleri</h3></div>
+                        <div class="service-item-wrapper">
+                            <div class="service-item-simple"><span>Özel ağaçlandırma uygulamaları</span></div>
+                            <div class="service-item-simple"><span>3D modelleme uygulamaları</span></div>
+                            <div class="service-item-simple"><span>Fidan ve peyzaj ürün satışları</span></div>
+                            <div class="service-item-simple"><span>Saha uygulamaları</span></div>
+                            <div class="service-item-simple"><span>Sulama projeleri</span></div>
+                            <div class="service-item-simple"><span>Otomatik sulama sistemi</span></div>
+                            <div class="service-item-simple"><span>Peyzaj danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Özel projelendirme hizmetleri</span></div>
+                        </div>
                     </div>
-                    <div class="service-item-simple">
-                        <span>Maden izin işlemleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Rezerv hesaplamaları</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Maden rehabilitasyon projeleri</span>
-                    </div>
-                    <div class="service-item-simple">
-                        <span>Maden sahası yönetimi</span>
+                    <div class="service-image-side">
+                        <img src="~/images/peyzaj-hiz.jpg" alt="Peyzaj Hizmetleri" class="service-side-image">
                     </div>
                 </div>
-                <p class="service-note-simple">Diğer maden hizmetlerimiz hakkında bilgi almak için lütfen bizimle iletişime geçin.</p>
             </div>
         </div>
-    </div>
-</div>
-<!-- References Section -->
-<div id="references" class="references-container">
-    <!-- Section Title -->
-    <div class="section-title">
-        <h2>Referanslarımız</h2>
-        <p>Diğer referanslarımız için bizimle iletişime geçebilirsiniz.</p>
-    </div>
-    
-    <!-- Logo Showcase - FIXED STRUCTURE -->
-    <div class="logo-showcase">
-        <div class="logo-row">
-            <!-- First row logos -->
-            <div class="logo-item">
-                <img src="~/images/nuh.png" alt="Referans Şirket 1">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/yildizentegre.png" alt="Referans Şirket 2">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/total1.jpg" alt="Referans Şirket 3">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/fenerbahçe1.png" alt="Referans Şirket 4">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/istaç.jpg" alt="Referans Şirket 5">
-            </div>
-        </div>
-        
-        <div class="logo-row">
-            <!-- Second row logos -->
-            <div class="logo-item">
-                <img src="~/images/kocaeli.png" alt="Referans Şirket 6">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/kastamonu.png" alt="Referans Şirket 7">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/gebze.png" alt="Referans Şirket 8">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/zorlu1.png" alt="Referans Şirket 9">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/lafarge.png" alt="Referans Şirket 10">
-            </div>
-        </div>
-        
-        <div class="logo-row">
-            <!-- Third row logos -->
-            <div class="logo-item">
-                <img src="~/images/aygaz.jpg" alt="Referans Şirket 11">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/cengiz.png" alt="Referans Şirket 12">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/kalyon.png" alt="Referans Şirket 13">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/kolin.jpeg" alt="Referans Şirket 14">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/limak.png" alt="Referans Şirket 15">
-            </div>
-        </div>
-        
-        <div class="logo-row">
-            <!-- Fourth row logos -->
-            <div class="logo-item">
-                <img src="~/images/ob.png" alt="Referans Şirket 16">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/mng.png" alt="Referans Şirket 17">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/ts.png" alt="Referans Şirket 18">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/iga.png" alt="Referans Şirket 19">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/ibb.jpeg" alt="Referans Şirket 20">
-            </div>
-        </div>
-        
-        <div class="logo-row">
-            <!-- Fifth row logos -->
-            <div class="logo-item">
-                <img src="~/images/arbiogaz.jpeg" alt="Referans Şirket 21">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/akçansa.png" alt="Referans Şirket 22">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/danış.jpeg" alt="Referans Şirket 23">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/atermit.png" alt="Referans Şirket 24">
-            </div>
-            <div class="logo-item">
-                <img src="~/images/kaya.png" alt="Referans Şirket 25">
-            </div>
-        </div>
-    </div>
-</div>
 
-<!-- Contact Section - Map & Info Layout -->
-<div id="contact" class="map-contact-container">
-    <div class="section-title">
-        <h2>İletişim</h2>
-        <p>Size yardımcı olmak için buradayız</p>
-    </div>
-    
-    <div class="map-contact-content">
-        <!-- Map Column -->
-        <div class="map-column">
-            <div class="map-container">
-                <!-- This div will hold the Google Map -->
-                <div id="google-map" style="width: 100%; height: 100%; border-radius: 10px;"></div>
+        <!-- Maden -->
+        <div id="maden-services" class="service-section">
+            <div class="service-section-content">
+                <div class="service-content-wrapper">
+                    <div class="service-image-side">
+                        <img src="~/images/madenhiz3.jpg" alt="Maden Hizmetleri" class="service-side-image">
+                    </div>
+                    <div class="service-text-side">
+                        <div class="service-header-simple"><h3>Maden Hizmetleri</h3></div>
+                        <div class="service-item-wrapper">
+                            <div class="service-item-simple"><span>Maden danışmanlığı</span></div>
+                            <div class="service-item-simple"><span>Maden izin işlemleri</span></div>
+                            <div class="service-item-simple"><span>Rezerv hesaplamaları</span></div>
+                            <div class="service-item-simple"><span>Maden rehabilitasyon projeleri</span></div>
+                            <div class="service-item-simple"><span>Maden sahası yönetimi</span></div>
+                        </div>
+                        <p class="service-note-simple">Diğer maden hizmetlerimiz hakkında bilgi almak için lütfen bizimle iletişime geçin.</p>
+                    </div>
                 </div>
-                </div>
-                
-        <!-- Info Column -->
-        <div class="contact-info-column">
-            <!-- Tabs for switching between offices -->
-            <div class="office-tabs">
-                <button class="office-tab active" data-office="kocaeli">KOCAELİ</button>
-                <button class="office-tab" data-office="istanbul">İSTANBUL</button>
-                <button class="office-tab" data-office="ankara">ANKARA</button>
             </div>
-            
-            <!-- Office Details Panels -->
-            <div class="office-panels">
-                <!-- Kocaeli Office Panel -->
-                <div class="office-panel active" id="kocaeli-panel">
-                    <div class="office-card">
-                        <div class="office-header">
-                            <div class="office-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
-                            </div>
-                            <h3>KOCAELİ Merkez Ofisi</h3>
-                        </div>
-                        <div class="office-address">
-                            <p>Yahyakaptan Mh. Şehit Ali İhsan Çakmak Sokağı No:62 D:1-2 İzmit / KOCAELİ</p>
-                        </div>
-                        <div class="contact-methods">
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                    </svg>
+        </div>
+
+        <!-- References -->
+        <div id="references" class="references-container">
+            <div class="section-title">
+                <h2>Referanslarımız</h2>
+                <p>Diğer referanslarımız için bizimle iletişime geçebilirsiniz.</p>
+            </div>
+            <div class="logo-showcase">
+                <div class="logo-row">
+                    <div class="logo-item"><img src="~/images/nuh.png" alt="Nuh Çimento"></div>
+                    <div class="logo-item"><img src="~/images/yildizentegre.png" alt="Yıldız Entegre"></div>
+                    <div class="logo-item"><img src="~/images/total1.jpg" alt="Total"></div>
+                    <div class="logo-item"><img src="~/images/fenerbahçe1.png" alt="Fenerbahçe"></div>
+                    <div class="logo-item"><img src="~/images/istaç.jpg" alt="İSTAÇ"></div>
+                </div>
+                <div class="logo-row">
+                    <div class="logo-item"><img src="~/images/kocaeli.png" alt="Kocaeli"></div>
+                    <div class="logo-item"><img src="~/images/kastamonu.png" alt="Kastamonu"></div>
+                    <div class="logo-item"><img src="~/images/gebze.png" alt="Gebze"></div>
+                    <div class="logo-item"><img src="~/images/zorlu1.png" alt="Zorlu"></div>
+                    <div class="logo-item"><img src="~/images/lafarge.png" alt="Lafarge"></div>
+                </div>
+                <div class="logo-row">
+                    <div class="logo-item"><img src="~/images/aygaz.jpg" alt="Aygaz"></div>
+                    <div class="logo-item"><img src="~/images/cengiz.png" alt="Cengiz"></div>
+                    <div class="logo-item"><img src="~/images/kalyon.png" alt="Kalyon"></div>
+                    <div class="logo-item"><img src="~/images/kolin.jpeg" alt="Kolin"></div>
+                    <div class="logo-item"><img src="~/images/limak.png" alt="Limak"></div>
+                </div>
+                <div class="logo-row">
+                    <div class="logo-item"><img src="~/images/ob.png" alt="OB"></div>
+                    <div class="logo-item"><img src="~/images/mng.png" alt="MNG"></div>
+                    <div class="logo-item"><img src="~/images/ts.png" alt="TS"></div>
+                    <div class="logo-item"><img src="~/images/iga.png" alt="İGA"></div>
+                    <div class="logo-item"><img src="~/images/ibb.jpeg" alt="İBB"></div>
+                </div>
+                <div class="logo-row">
+                    <div class="logo-item"><img src="~/images/arbiogaz.jpeg" alt="Arbiogaz"></div>
+                    <div class="logo-item"><img src="~/images/akçansa.png" alt="Akçansa"></div>
+                    <div class="logo-item"><img src="~/images/danış.jpeg" alt="Danış"></div>
+                    <div class="logo-item"><img src="~/images/atermit.png" alt="Atermit"></div>
+                    <div class="logo-item"><img src="~/images/kaya.png" alt="Kaya"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div id="contact" class="map-contact-container">
+            <div class="section-title">
+                <h2>İletişim</h2>
+                <p>Size yardımcı olmak için buradayız</p>
+            </div>
+            <div class="map-contact-content">
+                <div class="map-column">
+                    <div class="map-container">
+                        <div id="google-map" style="width: 100%; height: 100%; border-radius: 10px;"></div>
+                    </div>
+                </div>
+                <div class="contact-info-column">
+                    <div class="office-tabs">
+                        <button class="office-tab active" data-office="kocaeli">KOCAELİ</button>
+                        <button class="office-tab" data-office="istanbul">İSTANBUL</button>
+                        <button class="office-tab" data-office="ankara">ANKARA</button>
+                    </div>
+                    <div class="office-panels">
+                        <div class="office-panel active" id="kocaeli-panel">
+                            <div class="office-card">
+                                <div class="office-header">
+                                    <div class="office-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                        </svg>
+                                    </div>
+                                    <h3>KOCAELİ Merkez Ofisi</h3>
                                 </div>
-                                <a href="tel:02623110312">0262 311 0 312</a>
-                            </div>
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                        <polyline points="22,6 12,13 2,6"></polyline>
-                                    </svg>
+                                <div class="office-address">
+                                    <p>Yahyakaptan Mh. Şehit Ali İhsan Çakmak Sokağı No:62 D:1-2 İzmit / KOCAELİ</p>
                                 </div>
-                                <a href="mailto:info@hus.com.tr">info@hus.com.tr</a>
-                            </div>
-                        </div>
-                            </div>
-                        </div>
-                        
-                <!-- Istanbul Office Panel -->
-                <div class="office-panel" id="istanbul-panel">
-                    <div class="office-card">
-                        <div class="office-header">
-                            <div class="office-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
-                            </div>
-                            <h3>İSTANBUL Şube Ofisi</h3>
-                            </div>
-                        <div class="office-address">
-                            <p>Hamidiye Mh. Rumeli Cad. Blox Haliç III No:49 Kağıthane / İSTANBUL</p>
-                        </div>
-                        <div class="contact-methods">
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                    </svg>
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                            </svg>
+                                        </div>
+                                        <a href="tel:02623110312">0262 311 0 312</a>
+                                    </div>
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                            </svg>
+                                        </div>
+                                        <a href="mailto:info@hus.com.tr">info@hus.com.tr</a>
+                                    </div>
                                 </div>
-                                <a href="tel:02623110312">0262 311 0 312</a>
                             </div>
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                    <polyline points="22,6 12,13 2,6"></polyline>
-                                </svg>
+                        </div>
+                        <div class="office-panel" id="istanbul-panel">
+                            <div class="office-card">
+                                <div class="office-header">
+                                    <div class="office-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                        </svg>
+                                    </div>
+                                    <h3>İSTANBUL Şube Ofisi</h3>
+                                </div>
+                                <div class="office-address">
+                                    <p>Hamidiye Mh. Rumeli Cad. Blox Haliç III No:49 Kağıthane / İSTANBUL</p>
+                                </div>
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                            </svg>
+                                        </div>
+                                        <a href="tel:02623110312">0262 311 0 312</a>
+                                    </div>
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                            </svg>
+                                        </div>
+                                        <a href="mailto:istanbul@hus.com.tr">istanbul@hus.com.tr</a>
+                                    </div>
+                                </div>
                             </div>
-                                <a href="mailto:istanbul@hus.com.tr">istanbul@hus.com.tr</a>
-                            </div>
+                        </div>
+                        <div class="office-panel" id="ankara-panel">
+                            <div class="office-card">
+                                <div class="office-header">
+                                    <div class="office-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                        </svg>
+                                    </div>
+                                    <h3>ANKARA Şube Ofisi</h3>
+                                </div>
+                                <div class="office-address">
+                                    <p>Mustafa Kemal Mh. 2079 Cad. VİA Garden Blok No:69 Çankaya / ANKARA</p>
+                                </div>
+                                <div class="contact-methods">
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                            </svg>
+                                        </div>
+                                        <a href="tel:02623110312">0262 311 0 312</a>
+                                    </div>
+                                    <div class="contact-method">
+                                        <div class="method-icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                <polyline points="22,6 12,13 2,6"></polyline>
+                                            </svg>
+                                        </div>
+                                        <a href="mailto:ankara@hus.com.tr">ankara@hus.com.tr</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    
-                <!-- Ankara Office Panel -->
-                <div class="office-panel" id="ankara-panel">
-                    <div class="office-card">
-                        <div class="office-header">
-                            <div class="office-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                </svg>
-                            </div>
-                            <h3>ANKARA Şube Ofisi</h3>
-                        </div>
-                        <div class="office-address">
-                            <p>Mustafa Kemal Mh. 2079 Cad. VİA Garden Blok No:69 Çankaya / ANKARA</p>
-                        </div>
-                        <div class="contact-methods">
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    <div class="contact-channels-card">
+                        <h3>İletişim Kanallarımız</h3>
+                        <div class="channels-grid">
+                            <a href="https://wa.me/905316975005" class="channel-item">
+                                <div class="channel-icon whatsapp">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                                     </svg>
                                 </div>
-                                <a href="tel:02623110312">0262 311 0 312</a>
-                            </div>
-                            <div class="contact-method">
-                                <div class="method-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="https://www.linkedin.com/company/hus-muhendislik" class="channel-item">
+                                <div class="channel-icon linkedin">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                        <rect x="2" y="9" width="4" height="12"></rect>
+                                        <circle cx="4" cy="4" r="2"></circle>
                                     </svg>
                                 </div>
-                                <a href="mailto:ankara@hus.com.tr">ankara@hus.com.tr</a>
-                            </div>
+                                <span>LinkedIn</span>
+                            </a>
+                            <a href="https://www.instagram.com/husmuhendislik" class="channel-item">
+                                <div class="channel-icon instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg>
+                                </div>
+                                <span>Instagram</span>
+                            </a>
+                            <a href="https://www.hus.com.tr" class="channel-item">
+                                <div class="channel-icon website">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                    </svg>
+                                </div>
+                                <span>Web Sitesi</span>
+                            </a>
                         </div>
                     </div>
-                            </div>
-                        </div>
-                        
-            <!-- Social Media and Contact Channels Card -->
-            <div class="contact-channels-card">
-                <h3>İletişim Kanallarımız</h3>
-                <div class="channels-grid">
-                    <a href="https://wa.me/905316975005" class="channel-item">
-                        <div class="channel-icon whatsapp">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                            </svg>
-                        </div>
-                        <span>WhatsApp</span>
-                    </a>
-                    <a href="https://www.linkedin.com/company/hus-muhendislik" class="channel-item">
-                        <div class="channel-icon linkedin">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                    <rect x="2" y="9" width="4" height="12"></rect>
-                                    <circle cx="4" cy="4" r="2"></circle>
-                                </svg>
-                            </div>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://www.instagram.com/husmuhendislik" class="channel-item">
-                        <div class="channel-icon instagram">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                                </svg>
-                            </div>
-                        <span>Instagram</span>
-                    </a>
-                    <a href="https://www.hus.com.tr" class="channel-item">
-                        <div class="channel-icon website">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                        </div>
-                        <span>Web Sitesi</span>
-                    </a>
                 </div>
             </div>
         </div>
